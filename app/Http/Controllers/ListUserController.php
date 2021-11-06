@@ -9,7 +9,10 @@ class ListUserController extends Controller
 {
     public function index(Request $request)
     {
-        $users = UserLudik::get();
+        $users = UserLudik::withCount('partidas')
+        ->where('Acepto', '=', true)
+        ->limit(10)
+        ->get();
         // dd(json_encode($users));
         return view('listusers', compact('users'));
     }

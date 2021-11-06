@@ -24,4 +24,9 @@ class UserLudik extends Model
         'fechaRegistro',
         ];
 
+        public function partidas()
+        {
+            return $this->hasMany(Game::class, 'idJugador');
+        }
+
 }
