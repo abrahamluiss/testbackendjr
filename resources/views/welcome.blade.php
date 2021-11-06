@@ -58,6 +58,10 @@
                                     <a href="{{ route('listusers.index') }}">pregunta1</a>
                                     <a href="{{ route('registerusers.index') }}">pregunta2</a>
 
+                                    <h4>Tarde</h4>
+                                    <a href="{{ route('userswin.index') }}">pregunta3</a>
+                                    <a href="{{ url('userstime?name=Robert') }}">pregunta4</a>
+
                                 </div>
                             </div>
                         </div>

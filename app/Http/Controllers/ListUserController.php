@@ -31,4 +31,29 @@ class ListUserController extends Controller
 
         return view('registerusers', compact('count'));
     }
+    public function userswin(Request $request)
+    {
+        $costume = $request->input('costume');
+
+        $users = UserLudik::withSum('partidas', 'puntos')
+        ->where('idDisfraz', $costume)
+        ->orderByDesc('partidas_sum_puntos')
+        ->limit(10)
+        ->get();
+        return view('userswin', compact('users'));
+    }
+    public function userstime(Request $request)
+    {
+        $name = $request->input('name');
+
+        if($name==NULL){
+            return "Nulo";
+        }else{
+
+            $user = UserLudik::where('Nombre', $name)->first()
+            ->partidas()->selectRaw('SUM(DATEDIFF(fechaFin , fechaInicio)) AS minutos')->first();
+            // dd(json_encode($user));
+            return view('userstime', compact('user', 'name'));
+        }
+    }
 }
