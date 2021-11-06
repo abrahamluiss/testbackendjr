@@ -20,3 +20,5 @@ Route::get('/', function () {
 
 Route::get('listusers', [ListUserController::class, 'index'])->name('listusers.index');
 Route::get('registerusers', [ListUserController::class, 'registerusers'])->name('registerusers.index');
+
+
